@@ -34,7 +34,7 @@ void SideDiagonal(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
             {
                 SumOfNumbers = 0;
                 SumOfNumbers += (abs(matrix[i][j] / 10) + abs(matrix[i][j] % 10));
-            }
+            } 
         }
         for (int j = 0; j < MATRIX_SIZE; j++)
         {

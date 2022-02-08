@@ -9,7 +9,7 @@ void MatrixCreation(int matrix[MATRIX_SIZE][MATRIX_SIZE])
         for (int j = 0; j < MATRIX_SIZE; j++)
         {
             matrix[i][j] = rand() % 25 - 12;
-        }
+        } 
     }
 }
 void MatrixOut(int matrix[MATRIX_SIZE][MATRIX_SIZE])
