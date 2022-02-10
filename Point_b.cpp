@@ -20,14 +20,14 @@ void MatrixOut(int matrix[MATRIX_SIZE][MATRIX_SIZE])
         {
             cout << setw(4) << matrix[i][j];
         }
-        cout << endl; 
+        cout << endl;
     }
 }
 void Alternation(int matrix[MATRIX_SIZE][MATRIX_SIZE], int StrNum, int counter)
 {
     cout << "String number --> ";
     cin >> StrNum;
-    for (int j = 0; j < MATRIX_SIZE-1; j++)
+    for (int j = 0; j < MATRIX_SIZE - 1; j++)
     {
         if (matrix[StrNum][j] * matrix[StrNum][j + 1] < 0)
         {
