@@ -23,25 +23,27 @@ void MatrixOut(int matrix[MATRIX_SIZE][MATRIX_SIZE])
         cout << endl;
     }
 }
-void BlackElements (int matrix[MATRIX_SIZE][MATRIX_SIZE]){
+
+void FirstNullPosition (int matrix[MATRIX_SIZE][MATRIX_SIZE]){
     bool flag {true};
     int percent {};
     percent = MATRIX_SIZE / 3;
-    int coln{};
-    int str{};
+    int columnNumber{};
+    int stringNumber{};
     for (int i{percent}; i < MATRIX_SIZE; i++){
         if (!flag) break;
         for(int j{}; j < MATRIX_SIZE; j++){
             if (!flag) break;
             if (matrix[i][j] == 0){
-                coln = j+1;
-                str = i+1;
+                columnNumber = j+1;
+                stringNumber = i+1;
                 flag = false;
             }
         }
     }
-    cout << "\nString = "<<str<< "\nColumn = "<<coln;
+    cout << "\nString = "<<stringNumber<< "\nColumn = "<<columnNumber
 }
+
 int main() {
     srand(time(nullptr));
     int matrix [MATRIX_SIZE][MATRIX_SIZE];
