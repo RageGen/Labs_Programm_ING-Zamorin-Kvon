@@ -84,7 +84,7 @@ void Point_C(int matrix[MATRIX_SIZE][MATRIX_SIZE])
             }
         }
     }
-    cout << "\nString = " << stringNumber << "\nColumn = " << columnNumber<<'\n';
+    cout << "String = " << stringNumber << "\nColumn = " << columnNumber << '\n';
 }
 void OutMenu()
 {
@@ -93,6 +93,16 @@ void OutMenu()
     cout << "3. Point_B" << endl;
     cout << "4. Point_C" << endl;
     cout << "0. Exit" << endl;
+}
+void ContinueOrNot()
+{
+    int ContinueChecker = 1;
+    cout << "Back to menu or not? 1-Yes 0-No" << endl;
+    cin >> ContinueChecker;
+    if (ContinueChecker == 0)
+    {
+        MenuChecker = false;
+    }
 }
 int main()
 {
@@ -109,19 +119,23 @@ int main()
         case 1:
             MatrixCreation(matrix);
             MatrixOut(matrix);
+            ContinueOrNot();
             break;
         case 2:
-            cout << "Point a:" << endl;
+            cout << "Point A:" << endl;
             Point_A(matrix, SumOfNumbers);
             MatrixOut(matrix);
+            ContinueOrNot();
             break;
         case 3:
-            cout << "Point b: " << endl;
+            cout << "Point B: " << endl;
             cout << boolalpha << Point_B(matrix, StrNum, counter) << endl;
+            ContinueOrNot();
             break;
         case 4:
-            cout << "Point c: " << endl;
+            cout << "Point C: " << endl;
             Point_C(matrix);
+            ContinueOrNot();
             break;
         case 0:
             MenuChecker = false;
