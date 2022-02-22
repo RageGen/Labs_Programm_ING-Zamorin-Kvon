@@ -3,13 +3,18 @@
 #include <cmath>
 using namespace std;
 const int MATRIX_SIZE = 17;
+const int MaxRandomValue = 25;
+const int MinRandomValue = 12;
+bool counter = false;
+bool MenuChecker = true;
+int PointMenuChecker = 0;
 void MatrixCreation(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 {
     for (int i = 0; i < MATRIX_SIZE; i++)
     {
         for (int j = 0; j < MATRIX_SIZE; j++)
         {
-            matrix[i][j] = rand() % 25 - 12;
+            matrix[i][j] = rand() % MaxRandomValue - MinRandomValue; //!
         }
     }
 }
@@ -24,7 +29,7 @@ void MatrixOut(int matrix[MATRIX_SIZE][MATRIX_SIZE])
         cout << endl;
     }
 }
-void SideDiagonal(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
+void Point_A(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
 {
     for (int i = 0; i < MATRIX_SIZE; i++)
     {
@@ -42,33 +47,27 @@ void SideDiagonal(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
         }
     }
 }
-void Alternation(int matrix[MATRIX_SIZE][MATRIX_SIZE], int StrNum, int counter)
+bool Point_B(int matrix[MATRIX_SIZE][MATRIX_SIZE], int StrNum, bool counter) //!!
 {
+
     cout << "String number --> ";
     cin >> StrNum;
     for (int j = 0; j < MATRIX_SIZE - 1; j++)
     {
         if (matrix[StrNum][j] * matrix[StrNum][j + 1] < 0)
         {
-            counter = 1;
+            counter = true;
         }
     }
-    if (counter == 0)
-    {
-        cout << "No" << endl;
-    }
-    else
-    {
-        cout << "Yes" << endl;
-    }
+    return counter;
 }
-void BlackElements(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+void Point_C(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 {
     bool flag{true};
     int percent{};
     percent = MATRIX_SIZE / 3;
-    int coln{};
-    int str{};
+    int columnNumber{};
+    int stringNumber{};
     for (int i{percent}; i < MATRIX_SIZE; i++)
     {
         if (!flag)
@@ -79,13 +78,21 @@ void BlackElements(int matrix[MATRIX_SIZE][MATRIX_SIZE])
                 break;
             if (matrix[i][j] == 0)
             {
-                coln = j + 1;
-                str = i + 1;
+                columnNumber = j + 1;
+                stringNumber = i + 1;
                 flag = false;
             }
         }
     }
-    cout << "String = " << str << "\nColumn = " << coln << endl;
+    cout << "\nString = " << stringNumber << "\nColumn = " << columnNumber<<'\n';
+}
+void OutMenu()
+{
+    cout << "1. Matrix generation/regeneration" << endl;
+    cout << "2. Point_A" << endl;
+    cout << "3. Point_B" << endl;
+    cout << "4. Point_C" << endl;
+    cout << "0. Exit" << endl;
 }
 int main()
 {
@@ -93,15 +100,33 @@ int main()
     int matrix[MATRIX_SIZE][MATRIX_SIZE];
     int SumOfNumbers = 0;
     int StrNum = 0;
-    int counter = 0;
-    MatrixCreation(matrix);
-    MatrixOut(matrix);
-    SideDiagonal(matrix, SumOfNumbers);
-    cout << "Point a:" << endl;
-    MatrixOut(matrix);
-    cout << "Point c: " << endl;
-    BlackElements(matrix);
-    cout << "Point b: " << endl;
-    Alternation(matrix, StrNum, counter);
+    while (MenuChecker == true)
+    {
+        OutMenu();
+        cin >> PointMenuChecker;
+        switch (PointMenuChecker)
+        {
+        case 1:
+            MatrixCreation(matrix);
+            MatrixOut(matrix);
+            break;
+        case 2:
+            cout << "Point a:" << endl;
+            Point_A(matrix, SumOfNumbers);
+            MatrixOut(matrix);
+            break;
+        case 3:
+            cout << "Point b: " << endl;
+            cout << boolalpha << Point_B(matrix, StrNum, counter) << endl;
+            break;
+        case 4:
+            cout << "Point c: " << endl;
+            Point_C(matrix);
+            break;
+        case 0:
+            MenuChecker = false;
+            break;
+        }
+    }
     return 0;
 }
