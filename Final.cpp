@@ -88,6 +88,7 @@ void Point_C(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 }
 void OutMenu()
 {
+    system("clear");
     cout << "1. Matrix generation/regeneration" << endl;
     cout << "2. Point_A" << endl;
     cout << "3. Point_B" << endl;
