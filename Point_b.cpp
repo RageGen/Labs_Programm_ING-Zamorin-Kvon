@@ -23,13 +23,13 @@ void MatrixOut(int matrix[MATRIX_SIZE][MATRIX_SIZE])
         cout << endl;
     }
 }
-void Alternation(int matrix[MATRIX_SIZE][MATRIX_SIZE], int StrNum, int counter)
+void CheckForAlternatingSigns(int matrix[MATRIX_SIZE][MATRIX_SIZE], int stringNumber, int counter)
 {
     cout << "String number --> ";
-    cin >> StrNum;
+    cin >> stringNumber;
     for (int j = 0; j < MATRIX_SIZE - 1; j++)
     {
-        if (matrix[StrNum][j] * matrix[StrNum][j + 1] < 0)
+        if (matrix[stringNumber][j] * matrix[stringNumber][j + 1] < 0)
         {
             counter = 1;
         }
@@ -47,10 +47,10 @@ int main()
 {
     srand(time(nullptr));
     int matrix[MATRIX_SIZE][MATRIX_SIZE];
-    int StrNum = 0;
+    int stringNumber = 0;
     int counter = 0;
     MatrixCreation(matrix);
     MatrixOut(matrix);
-    Alternation(matrix, StrNum, counter);
+    CheckForAlternatingSigns(matrix, stringNumber, counter);
     return 0;
 }
