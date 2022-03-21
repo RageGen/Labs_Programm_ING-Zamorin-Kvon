@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-#include <cmath>
 using namespace std;
 const int MATRIX_SIZE = 17;
 void MatrixCreation(int matrix[MATRIX_SIZE][MATRIX_SIZE])
@@ -24,7 +23,7 @@ void MatrixOut(int matrix[MATRIX_SIZE][MATRIX_SIZE])
         cout << endl;
     }
 }
-void SideDiagonal(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
+void AddValueOfSideDiagonalElement(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
 {
     for (int i = 0; i < MATRIX_SIZE; i++)
     {
@@ -34,7 +33,7 @@ void SideDiagonal(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
             {
                 SumOfNumbers = 0;
                 SumOfNumbers += (abs(matrix[i][j] / 10) + abs(matrix[i][j] % 10));
-            } 
+            }
         }
         for (int j = 0; j < MATRIX_SIZE; j++)
         {
@@ -49,8 +48,8 @@ int main()
     int SumOfNumbers = 0;
     MatrixCreation(matrix);
     MatrixOut(matrix);
-    SideDiagonal(matrix, SumOfNumbers);
-    cout << "Point a:" << endl;
+    AddValueOfSideDiagonalElement(matrix, SumOfNumbers);
+    cout << "Add value of side diagonal element to each element of matrix" << endl;
     MatrixOut(matrix);
     return 0;
 }
