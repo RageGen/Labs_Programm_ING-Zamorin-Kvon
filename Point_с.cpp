@@ -24,10 +24,10 @@ void MatrixOut(int matrix[MATRIX_SIZE][MATRIX_SIZE])
     }
 }
 
-void Point_C(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+void FirstNullValue(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 {
     bool flag{true};
-    int percent{};
+    int percent;
     percent = MATRIX_SIZE / 3;
     int columnNumber{};
     int stringNumber{};
@@ -54,8 +54,8 @@ int main()
     srand(time(nullptr));
     int matrix[MATRIX_SIZE][MATRIX_SIZE];
     MatrixCreation(matrix);
-    Point_C(matrix);
-    cout << "Point C:" << endl;
+    FirstNullValue(matrix);
+    cout << "Look for the first null element" << endl;
     MatrixOut(matrix);
     return 0;
 }
