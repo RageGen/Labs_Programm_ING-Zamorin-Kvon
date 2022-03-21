@@ -1,10 +1,9 @@
 #include <iostream>
 #include <iomanip>
-#include <cmath>
 using namespace std;
 const int MATRIX_SIZE = 17;
-const int MaxRandomValue = 25;
-const int MinRandomValue = 12;
+const int MAX_RANDOM_VALUE = 25;
+const int MIN_RANDOM_VALUE = 12;
 bool counter = false;
 bool MenuChecker = true;
 int PointMenuChecker = 0;
@@ -14,7 +13,7 @@ void MatrixCreation(int matrix[MATRIX_SIZE][MATRIX_SIZE])
     {
         for (int j = 0; j < MATRIX_SIZE; j++)
         {
-            matrix[i][j] = rand() % MaxRandomValue - MinRandomValue; //!
+            matrix[i][j] = rand() % MAX_RANDOM_VALUE - MIN_RANDOM_VALUE; //!
         }
     }
 }
@@ -29,7 +28,7 @@ void MatrixOut(int matrix[MATRIX_SIZE][MATRIX_SIZE])
         cout << endl;
     }
 }
-void Point_A(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
+void AddValueOfSideDiagonalElement(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
 {
     for (int i = 0; i < MATRIX_SIZE; i++)
     {
@@ -47,21 +46,20 @@ void Point_A(int matrix[MATRIX_SIZE][MATRIX_SIZE], int SumOfNumbers)
         }
     }
 }
-bool Point_B(int matrix[MATRIX_SIZE][MATRIX_SIZE], int StrNum, bool counter) //!!
+bool CheckForAlternatingSigns(int matrix[MATRIX_SIZE][MATRIX_SIZE], int stringNumber, bool counter) //!!
 {
-
     cout << "String number --> ";
-    cin >> StrNum;
+    cin >> stringNumber;
     for (int j = 0; j < MATRIX_SIZE - 1; j++)
     {
-        if (matrix[StrNum][j] * matrix[StrNum][j + 1] < 0)
+        if (matrix[stringNumber][j] * matrix[stringNumber][j + 1] < 0)
         {
             counter = true;
         }
     }
     return counter;
 }
-void Point_C(int matrix[MATRIX_SIZE][MATRIX_SIZE])
+void FirstNullValue(int matrix[MATRIX_SIZE][MATRIX_SIZE])
 {
     bool flag{true};
     int percent{};
@@ -110,37 +108,37 @@ int main()
     srand(time(nullptr));
     int matrix[MATRIX_SIZE][MATRIX_SIZE];
     int SumOfNumbers = 0;
-    int StrNum = 0;
+    int stringNumber = 0;
     while (MenuChecker == true)
     {
         OutMenu();
         cin >> PointMenuChecker;
         switch (PointMenuChecker)
         {
-        case 1:
-            MatrixCreation(matrix);
-            MatrixOut(matrix);
-            ContinueOrNot();
-            break;
-        case 2:
-            cout << "Point A:" << endl;
-            Point_A(matrix, SumOfNumbers);
-            MatrixOut(matrix);
-            ContinueOrNot();
-            break;
-        case 3:
-            cout << "Point B: " << endl;
-            cout << boolalpha << Point_B(matrix, StrNum, counter) << endl;
-            ContinueOrNot();
-            break;
-        case 4:
-            cout << "Point C: " << endl;
-            Point_C(matrix);
-            ContinueOrNot();
-            break;
-        case 0:
-            MenuChecker = false;
-            break;
+            case 1:
+                MatrixCreation(matrix);
+                MatrixOut(matrix);
+                ContinueOrNot();
+                break;
+            case 2:
+                cout << "Point A:" << endl;
+                AddValueOfSideDiagonalElement(matrix, SumOfNumbers);
+                MatrixOut(matrix);
+                ContinueOrNot();
+                break;
+            case 3:
+                cout << "Point B: " << endl;
+                cout << boolalpha << CheckForAlternatingSigns(matrix, stringNumber, counter) << endl;
+                ContinueOrNot();
+                break;
+            case 4:
+                cout << "Point C: " << endl;
+                FirstNullValue(matrix);
+                ContinueOrNot();
+                break;
+            case 0:
+                MenuChecker = false;
+                break;
         }
     }
     return 0;
