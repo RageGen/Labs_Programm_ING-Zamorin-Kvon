@@ -47,7 +47,7 @@ void Point_C(int matrix[MATRIX_SIZE][MATRIX_SIZE])
             }
         }
     }
-    cout << "String = " << stringNumber << "\nColumn = " << columnNumber << '\n';
+    cout << "String = " << stringNumber << "\nColumn = " << columnNumber <<'\n';
 }
 int main()
 {
