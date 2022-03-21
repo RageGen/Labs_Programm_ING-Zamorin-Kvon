@@ -88,9 +88,9 @@ void OutMenu()
 {
     system("clear");
     cout << "1. Matrix generation/regeneration" << endl;
-    cout << "2. Point_A" << endl;
-    cout << "3. Point_B" << endl;
-    cout << "4. Point_C" << endl;
+    cout << "2. Add value of side diagonal element to each element of matrix" << endl;
+    cout << "3. Check string for alternating signs" << endl;
+    cout << "4. Look for the first null element" << endl;
     cout << "0. Exit" << endl;
 }
 void ContinueOrNot()
@@ -121,18 +121,19 @@ int main()
                 ContinueOrNot();
                 break;
             case 2:
-                cout << "Point A:" << endl;
+                cout << "Add value of side diagonal element to each element of matrix:" << endl;
                 AddValueOfSideDiagonalElement(matrix, SumOfNumbers);
                 MatrixOut(matrix);
                 ContinueOrNot();
                 break;
             case 3:
-                cout << "Point B: " << endl;
+                cout << "Check string for alternating signs: " << endl;
                 cout << boolalpha << CheckForAlternatingSigns(matrix, stringNumber, counter) << endl;
                 ContinueOrNot();
                 break;
             case 4:
-                cout << "Point C: " << endl;
+                cout << "Look for the first null element: " << endl;
+                MatrixOut(matrix);
                 FirstNullValue(matrix);
                 ContinueOrNot();
                 break;
